@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <link rel="stylesheet" href="./../static/css/styles.css">
+</head>
+<body>
+<div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png" alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+            <img class="form-status marginTop2 marginBottom" src="./../static/images/S12@3x.jpeg" alt="University Logo" />
+                <div class="main-content">
+                        <div class="footer">
+                    <div class="line-text">
+                        <hr class="line"/>
+                        <span class="text">هشدار مهم</span>
+                        <hr class="line"/>
+                    </div>
+                    <p class="footer-text">
+                        این برنامه فقط برای اهداف اطلاعاتی طراحی شده است و نباید برای تشخیص خودکار یا درمان خودکار هر گونه شرایط پزشکی استفاده شود. پیش‌بینی‌ها و توصیه‌های ورزشی ارائه شده توسط این برنامه جایگزین مراقبت پزشکی حرفه‌ای نیستند.
+
+                        اگر هرگونه بیماری قبلی ستون فقرات، کمر یا عصبی دارید، یا اگر کمردرد شدید یا مداوم را تجربه می‌کنید، همیشه باید با پزشک خود مشورت کنید قبل از استفاده از این برنامه یا شروع هر برنامه ورزشی جدیدی. تمرینات نامناسب یا بیش از حد می‌تواند برخی مشکلات کمر و ستون فقرات را تشدید کند.
+
+                        توسعه‌دهندگان این برنامه مسئول هرگونه آسیب یا پیامدهای منفی ناشی از عدم مشورت کاربران با ارائه‌دهنده مراقبت‌های بهداشتی خود قبل از استفاده از برنامه یا پیروی از تمرینات توصیه شده نیستند. لطفاً از این برنامه به طور مسئولانه استفاده کرده و ایمنی و رفاه خود را اولویت قرار دهید.
+                    </p>
+
+                </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <span class="result-button-wrapper">
+                            <button class="result-btn">
+                                مشاهده نتایج پرسشنامه
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pages-footer">
+                <div class="pages-footer-14">
+                <span class="page-number">۱۴</span>
+                    <button class="footer-btn" id="prev-btn">
+                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+
+                </div>
+                <hr class="footer-line" />
+            </div>
+        </div>
+        <script src="./../static/js/page_fourteen.js"></script>
+
+</body>
+</html>        

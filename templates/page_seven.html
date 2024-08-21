@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرسشنامه ی اوسوستری</title>
+    <link rel="stylesheet" href="./../static/css/styles.css"> 
+</head>
+<body>
+    <div class="container translate-container">
+        <div class="header2">
+            <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png" alt="University Logo" />
+            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        </div>
+        <div class="content">
+            <img class="form-status marginTop" src="./../static/images/S7@3x.jpeg" alt="University Logo" />
+
+            <div class="main-content">
+                <form id="quiz-form" method="post" novalidate>
+                    {% csrf_token %}
+                    <div id="quiz-form-div">
+                        <div class="question-container">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question1">6. ایستادن</p>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="0" value="0">
+                            <label class="option" for="0">تا زمانی که بخواهم بدون درد اضافی می توانم بایستم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="1" value="1">
+                            <label class="option" for="1">من تا زمانی که بخواهم می توانم بایستم، اما درد بیشتری در من ایجاد می شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="2" value="2">
+                            <label class="option" for="2">درد مانع از ایستادن من برای بیش از یک ساعت می شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="3" value="3">
+                            <label class="option" for="3">درد مانع از ایستادن من برای بیش از نیم ساعت می شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="4" value="4">
+                            <label class="option" for="4">درد مانع از ایستادن من برای بیش از 10 دقیقه می شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="5" value="5">
+                            <label class="option" for="5">درد کاملا مانع از ایستادن من می شود.</label>
+                        </div>
+                    </div>
+
+                    <div id="quiz-form-div">
+                        <div class="question-container">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question1">7. خوابیدن</p>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_0" value="0">
+                            <label class="option" for="answer_2_0">درد مانع از خواب راحت من نمی شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_1" value="1">
+                            <label class="option" for="answer_2_1">فقط با مصرف دارو می توانم خوب بخوابم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_2" value="2">
+                            <label class="option" for="answer_2_2">حتی زمانی که دارو مصرف می کنم کمتر از 6 ساعت می خوابم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_3" value="3">
+                            <label class="option" for="answer_2_3">حتی زمانی که دارو مصرف می کنم، کمتر از 4 ساعت می خوابم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_4" value="4">
+                            <label class="option" for="answer_2_4">حتی زمانی که دارو مصرف می کنم، کمتر از 2 ساعت می خوابم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_5" value="5">
+                            <label class="option" for="answer_2_5">درد کاملا مانع از خواب من می شود.</label>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <div class="pages-footer">
+            <button class="footer-btn" id="next-btn" onclick="window.location.href='./page_eight.html'">
+                <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                <img class="footer-next-btn-img2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+            </button>
+             </form>
+            <span class="page-number">۷</span>
+            <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_six' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_six' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+            <hr class="footer-line" />
+        </div>
+    </div>
+    <script src="./../static/js/page_seven.js"></script>
+
+</body>
+</html>

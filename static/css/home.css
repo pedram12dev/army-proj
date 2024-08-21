@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0 0 5% 0;
+    font-family: 'Vazir', Arial, sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+    display: block;
+}
+
+.content1 {
+    display: flex;          /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center align items horizontally */
+    text-align: center;     /* Center align text */
+    margin: 20px;          /* Optional: Add some margin */
+}
+
+.introduction-text {
+    margin-bottom: 20px;   /* Space between text and images */
+}
+
+.content1-img {
+    max-width: 100%;       /* Ensure images are responsive */
+    height: auto;          /* Maintain aspect ratio */
+    margin-bottom: 20px;   /* Space between images */
+}

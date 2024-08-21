@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+        <div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+                <img class="form-status marginTop" src="{% static 'images/S7@3x.jpeg' %}" alt="Form Status" />
+
+                <div class="main-content">
+                    <h3 class="porseshname-topic">پرسشنامه ی اوسوستری</h3>
+                    <p class="porseshname-instruction">
+                        دستورالعمل: این پرسشنامه به منظور ارزیابی میزان تأثیر کمردرد بر توانایی شما برای مدیریت زندگی روزمره طراحی شده است. لطفاً به هر بخش پاسخ دهید و در هر بخش فقط یک مورد را که در این زمان برای شما بیشتر صدق می کند علامت بزنید.
+                    </p>
+
+                    <form id="quiz-form" method="post" novalidate>
+                        {% csrf_token %}
+                            <div class="question-container">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator" style="width: 10px; height: 10px; display: inline-block; background-color: white;"></span>
+                            </span>
+                            <p class="question1">۱. شدت درد</p>
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="0" value="0">
+
+                            <label class="option" for="0">من می توانم دردی را که دارم بدون نیاز به استفاده از داروهای ضد درد تحمل کن</label>
+                            <input type="hidden" name="point_number" value="0">
+
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="1" value="1">
+
+                            <label class="option" for="1">درد بدی دارم اما بدون داروهای ضد درد از عهده آن بر می آیم.</label>
+                            <input type="hidden" name="point_number" value="01">
+
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="2" value="2">
+
+                            <label class="option" for="2">مسکن ها دردم را کاملا تسکین می دهند.</label>
+                            <input type="hidden" name="point_number" value="02">
+
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="3" value="3">
+                            <label class="option" for="3">داروهای مسکن دردم را به میزان متوسطی تسکین می دهند.</label>
+                            <input type="hidden" name="point_number" value="03">
+
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="4" value="4">
+                            <label class="option" for="4">مسکن‌ها دردم را به میزان بسیار کمی تسکین می دهند.</label>
+                            <input type="hidden" name="point_number" value="04">
+
+                        </div>
+
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer" id="5" value="5">
+                            <label class="option" for="5">مسکن ها تاثیری روی دردم ندارند و استفاده نمی کنم.</label>
+                            <input type="hidden" name="point_number" value="05">
+
+                        </div>
+                </div>
+            </div>
+            <div class="pages-footer">
+                <button class="footer-btn" id="next-btn" >
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="{% static 'images/icons8-next-100.png' %}" onclick="window.location.href= {% url 'core:page_two' %}" alt="Next">-->
+<!--                    <img class="footer-next-btn-img2" src="{% static 'images/icons8-right-100.png' %}" onclick="window.location.href= {% url 'core:page_two' %}" alt="Next">-->
+                </button>
+                </form>
+                <span class="page-number">۴</span>
+                    <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_three' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_three' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+                <hr class="footer-line" />
+            </div>
+
+        </div>
+<script src="{% static 'js/page_four.js' %}"></script>
+{% endblock %}

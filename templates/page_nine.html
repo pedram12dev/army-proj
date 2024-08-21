@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>پرسشنامه ی اوسوستری</title>
+        <link rel="stylesheet" href="./../static/css/styles.css"> 
+    </head>
+    <body>
+        <div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png" alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+                <img class="form-status marginTop" src="./../static/images/S7@3x.jpeg" alt="University Logo" />
+
+                <div class="main-content">
+                    <form id="quiz-form" method="post" novalidate>
+                        {% csrf_token %}
+                        <div id="quiz-form-div">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span class="status-indicator"></span>
+                                </span>
+                                <p class="question1">10. اشتغال / خانه داری</p>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="0" value="0">
+                                <label class="option" for="0">خانه داریفعالیت های شغلی معمولی من باعث درد نمی شود.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="1" value="1">
+                                <label class="option" for="1">خانه داری/فعالیت های شغلی معمولی درد مرا افزایش می دهد، اما من هنوز می توانم تمام آنچه که از من خواسته می شود را انجام دهم.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="2" value="2">
+                                <label class="option" for="2">من می توانم بیشتر کارهای خانه داری/ شغلی ام را انجام دهم، اما درد من را از انجام کار های فیزیکی استرس زا باز می دارد. (مانند بلند کردن، جاروبرقی)</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="3" value="3">
+                                <label class="option" for="3">درد مرا از انجام هر کاری جز وظایف سبک باز می دارد.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="4" value="4">
+                                <label class="option" for="4">درد حتی مرا از انجام وظایف سبک باز می دارد.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="5" value="5">
+                                <label class="option" for="5">درد مرا از انجام هر کاری (شغل، خانه داری و...) باز می دارد.</label>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="pages-footer">
+                <button class="footer-btn" id="next-btn" onclick="window.location.href='./page_ten.html'">
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                    <img class="footer-next-btn-img2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+                </button>
+                </form>
+                <span class="page-number">۹</span>
+                <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_eight' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_eight' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+                <hr class="footer-line" />
+            </div>
+        </div>
+        <script src="./../static/js/page_nine.js"></script>
+
+    </body>
+    </html>

@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <link rel="stylesheet" href="./../static/css/styles.css"> 
+</head>
+<body>
+        <div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png"
+                    alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+                <img class="form-status marginTop" src="./../static/images/S7@3x.jpeg" alt="University Logo" />
+
+                <div class="main-content">
+                    <form id="quiz-form" method="post" novalidate>
+                        {% csrf_token %}
+                        <div id="quiz-form-div">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span class="status-indicator"></span>
+                                </span>
+                                <p class="question1">8. زندگی اجتماعی</p>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="0" value="0">
+                                <label class="option" for="0">زندگی اجتماعی من عادی است و هیچ درد اضافی به من نمی دهد.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="1" value="1">
+                                <label class="option" for="1">زندگی اجتماعی من عادی است اما درجه دردم را افزایش می دهد.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="2" value="2">
+                                <label class="option" for="2">درد اثر قابل توجهی روی زندگی اجتماعی من ندارد، اگرچه باعث حدود شدن بعضی علایق انرژی بر مثل رقصیدن شده است.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="3" value="3">
+                                <label class="option" for="3">درد زندگی اجتماعی من را محدود کرده است و من اغلب بیرون نمی روم.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="4" value="4">
+                                <label class="option" for="4">درد زندگی اجتماعی مرا به خانه محدود کرده است.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_1" id="5" value="5">
+                                <label class="option" for="5">من به خاطر درد هیچ زندگی اجتماعی ندارم.</label>
+                            </div>
+                        </div>
+
+
+                        <div id="quiz-form-div">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span class="status-indicator"></span>
+                                </span>
+                                <p class="question1">9. مسافرت</p>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_0" value="0">
+                                <label class="option" for="answer_2_0">من می توانم بدون درد اضافی به هر جایی سفر کنم.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_1" value="1">
+                                <label class="option" for="answer_2_1"> من می توانم به هر جایی سفر کنم، اما درد بیشتری به من وارد می کند.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_2" value="2">
+                                <label class="option" for="answer_2_2"> دردم بد است، اما می توانم سفرهای بیش از 2 ساعت را مدیریت می کنم.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_3" value="3">
+                                <label class="option" for="answer_2_3">درد مرا به سفرهای کمتر از 1 ساعت محدود می کند.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_4" value="4">
+                                <label class="option" for="answer_2_4">درد مرا به سفرهای ضروری کوتاه زیر 30 دقیقه محدود می کند.</label>
+                            </div>
+                        
+                            <div class="option-container">
+                                <span class="square"></span>
+                                <input class="options-radio" type="radio" name="answer_2" id="answer_2_5" value="5">
+                                <label class="option" for="answer_2_5"> درد مرا از مسافرت باز می دارد مگر برای مراجعه به پزشک یا بیمارستان.</label>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="pages-footer">
+                <button class="footer-btn" id="next-btn" type="button" onclick="window.location.href='./page_nine.html'">
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                    <img class="footer-next-btn-img2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+                </button>
+                </form>
+                <span class="page-number">۸</span>
+                <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_seven' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_seven' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+                <hr class="footer-line" />
+            </div>
+
+        </div>
+        <script src="./../static/js/page_eight.js"></script>
+
+</body>
+</html>

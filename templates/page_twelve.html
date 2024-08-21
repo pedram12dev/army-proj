@@ -1,0 +1,237 @@
+{% load static %}
+
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرسشنامه ی اوسوستری</title>
+    <link rel="stylesheet" href="./../static/css/styles.css"> 
+</head>
+<body>
+
+        <div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png"
+                    alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+                <img class="form-status marginTop" src="./../static/images/S10@3x.jpeg" alt="University Logo" />
+
+                <div class="main-content">
+                    <form id="quiz-form3" class="quiz-form3-1" method="post" novalidate>
+                        {% csrf_token %}
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-1" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style="margin: 0; flex-Grow: 1 ">آرام بودن و در آرامش به سربردن برایم مشکل
+                                    است
+                                </p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_1" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_1" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_1" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_1" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <hr class="section3-divider-line" />
+                            <input type="hidden" name="answer" id="selected-answer" />
+
+                        </div>
+
+
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-2" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style=" margin: 0; flex-Grow: 1">احساس دلمردگی و دل شکستگی دارم</p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_2" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_2" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_2" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_2" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <hr class="section3-divider-line" />
+                            <input type="hidden" name="answer" id="selected-answer" />
+                        </div>
+
+
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-3" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style="margin: 0; flex-Grow: 1 ">نسبت به هرچیزی که مرا از کار بازدارد بی
+                                    تحمل و
+                                    نابردبارم (صبرو تحمل ندارم)</p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_3" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_3" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_3" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_3" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <hr class="section3-divider-line" />
+                            <input type="hidden" name="answer" id="selected-answer" />
+                        </div>
+
+
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-4" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style=" margin: 0; flex-Grow: 1">احساس می کنم که در هر لحظه ممکن است دچار
+                                    ترس و
+                                    وحشت شوم</p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_4" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_4" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_4" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_4" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <hr class="section3-divider-line" />
+                            <input type="hidden" name="answer" id="selected-answer" />
+                        </div>
+
+
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-5" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style=" margin: 0; flex-Grow: 1">قادر نیستم درباره خیلی چیزها شور و شوق از
+                                    خود
+                                    نشان دهم
+                                </p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_5" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_5" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_5" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_5" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <hr class="section3-divider-line" />
+                            <input type="hidden" name="answer" id="selected-answer" />
+                        </div>
+
+
+                        <div id="quiz-form-1" class="quiz-form3-1">
+                            <div class="question-container">
+                                <span class="status-indicator-out">
+                                    <span id="status-indicator-6" class="status-indicator"></span>
+                                </span>
+                                <p class="question" style=" margin: 0; flex-Grow: 1">احساس می کنم به عنوان یک فرد ارزش زیادی
+                                    ندارم
+                                </p>
+                            </div>
+                            <div class="options3" style=" display: 'flex'; gap: '10px' ">
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_6" value="0">اصلا</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_6" value="1">کم</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_6" value="2">متوسط</input>
+                                </div>
+                                <div class="option-container-page10">
+                                    <span class="square"></span>
+                                    <input type="radio" class="options-radio-page10" name="answer_6" value="3">زیاد</input>
+                                </div>
+                            </div>
+                            <input type="hidden" name="answer" id="selected-answer" />
+                        </div>
+
+                </div>
+            </div>
+
+            <div class="pages-footer">
+                <button class="footer-btn" id="next-btn">
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                    <img class="footer-next-btn-img2-2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+                </button>
+                </form>
+                <span class="page-number">۱۲</span>
+                <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_eleven' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_eleven' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+
+                <hr class="footer-line" />
+            </div>
+        </div>
+        <script src="./../static/js/page_twelve.js"></script>
+
+</body>
+</html>

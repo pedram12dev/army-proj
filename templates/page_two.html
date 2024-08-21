@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header2">
+            <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
+            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        </div>
+        <div class="content2">
+            <img class="form-status" src="{% static 'images/S2@3x.jpeg' %}" alt="University Logo" />
+            <div class="main-content">
+                <form id="quiz-form2" method="post" novalidate>
+                    {% csrf_token %}
+                    <div id="quiz-form2-div" class="quiz-form2" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                             <p class="question">محل سکونت</p>
+                        </div>
+                        <div class="select-container" style="display: flex; margin-right: 95px;">
+                            {{form.province}}
+                            {{form.city}}
+                        </div>
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">میزان تحصیلات</p>
+                        </div>
+                        <div class="select-container" >
+                            {{form.tahsilat}}
+                        </div>
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">وزن</p>
+                        </div>
+                        <input class="input-page2"  type="text" name="weight" placeholder="ــــــــــــــــــــــــــــــــــــــــــــــــ  کیلوگرم">
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">قد</p>
+                        </div>
+                        <input class="input-page2"  type="text" name="height" placeholder="ـــــــــــــــــــــــــــــــــــــــــ  سانتی متر">
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">مدت زمان سپری شده از خدمت سربازی </p>
+                        </div>
+                        {{form.time_goes}}
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">شغل پیش از شروع خدمت سربازی </p>
+                        </div>
+                        {{form.job}}
+                    </div>
+
+                    <div id="quiz-form2-div" dir="rtl">
+                        <div class="question-container3">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>                            
+                            <p class="question">وضعیت خواب خود را چگونه می بینید؟</p>
+                        </div>
+                        <div class="select-container">
+                            {{form.sleep}}
+                        </div>
+                    </div>
+            </div>
+            <div class="pages-footer-exp">
+                <button class="footer-btn" id="next-btn">
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+                </button>
+                </form>
+
+                <span class="page-number">۲</span>
+                <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_one' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_one' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+                <hr class="footer-line" />
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/page_two.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرسشنامه ی اوسوستری</title>
+    <link rel="stylesheet" href="./../static/css/styles.css">
+</head>
+<body>
+    <div class="container translate-container">
+        <div class="header2">
+            <img class="logo" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png" alt="University Logo" />
+            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        </div>
+        <div class="content">
+            <img class="form-status marginTop" src="./../static/images/S7@3x.jpeg" alt="University Logo" />
+
+            <div class="main-content">
+                <form id="quiz-form" method="post" novalidate>
+                    {% csrf_token %}
+                    <div id="quiz-form-div">
+                        <div class="question-container">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question1">2. مراقبت های شخصی (مانند شستشو، لباس پوشیدن)</p>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="0" value="0">
+                            <label class="option" for="0">من می توانم به صورت نرمال از خودم مراقبت کنم بدون اینکه باعث درد بیشتری شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="1" value="1">
+                            <label class="option" for="1">من می توانم به صورت نرمال از خودم مراقبت کنم، اما باعث اضافه شدن دردم می شود.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="2" value="2">
+                            <label class="option" for="2">مراقبت از خودم دردناک است و به همین خاطر آهسته و دقیق عمل می کنم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="3" value="3">
+                            <label class="option" for="3">من به کمک نیاز دارم اما بیشتر مراقبت های شخصی ام را مدیریت می کنم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="4" value="4">
+                            <label class="option" for="4">من هر روز در بیشتر جنبه های مراقبت از خود به کمک نیاز دارم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_1" id="5" value="5">
+                            <label class="option" for="5">من لباس نمی پوشم، در شرایط سختی هستم و در بستر می مانم.</label>
+                        </div>
+                    </div>
+
+                    <div id="quiz-form-div">
+                        <div class="question-container">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question1">3. بلند کردن</p>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_0" value="0">
+                            <label class="option" for="answer_2_0">من می توانم وزنه های سنگین را بدون درد اضافی بلند کنم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_1" value="1">
+                            <label class="option" for="answer_2_1">من می توانم وزنه های سنگین بلند کنم اما درد اضافی ایجاد می کند.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_2" value="2">
+                            <label class="option" for="answer_2_2">درد مانع از برداشتن وزنه های سنگین از روی زمین می شود، اما اگر در پوزیشن مناسبی باشند به راحتی می توانم از پس آن ها بر بیایم؛ (مثلا روی میز باشند)</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_3" value="3">
+                            <label class="option" for="answer_2_3">درد مانع از بلند کردن وزنه های سنگین می شود، اما می توانم اشیایی با وزن سبک تا متوسط را در صورتی که در پوزیشن مناسبی باشند مدیریت کنم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_4" value="4">
+                            <label class="option" for="answer_2_4">من می توانم وزنه های بسیار سبک را بلند کنم.</label>
+                        </div>
+                    
+                        <div class="option-container">
+                            <span class="square"></span>
+                            <input class="options-radio" type="radio" name="answer_2" id="answer_2_5" value="5">
+                            <label class="option" for="answer_2_5">من اصلا نمی توانم چیزی بلند یا حمل کنم.</label>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <div class="pages-footer">
+            <button class="footer-btn" id="next-btn" >
+                <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                <img class="footer-next-btn-img2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+            </button>
+            </form>
+            <span class="page-number">۵</span>
+            <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_four' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_four' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+            </button>
+            <hr class="footer-line" />
+        </div>
+    </div>
+    <script src="./../static/js/page_five.js"></script>
+
+</body>
+</html>

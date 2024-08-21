@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container translate-container">
+            <div class="header2">
+                <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
+                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+            </div>
+            <div class="content">
+                <img class="form-status marginTop marginBottom" src="{% static 'images/S4@3x.jpeg' %}" alt="University Logo" />
+                <div class="main-content">
+                            <div class="question-container2 transformToRight">
+                                <span class="status-indicator-out">
+                                    <span class="status-indicator status-indicator-background"></span>
+                                </span>
+                                <p class="question max-width">بر اساس شدت کمردرد خود و به کمک شکل و خط کش پايین به شدت درد خود از ۱ تا ۱۰ نمره دهید.</p>
+                            </div>
+                            <div>
+                                <div class="pagethree-div">
+                                    <p class="pagethree-p">مقیاس در صورت</p>
+                                </div>
+                                <div>
+                                <img class="form-status marginTop marginBottom" src="{% static 'images/372@3x.png' %}" alt="University Logo" />
+
+                                </div>
+                                <form action="" method="post" novalidate>
+                                    {% csrf_token %}
+                                    <div class="select-container-pageThree">
+                                        {{form.pain_waist}}
+                                    </div>
+
+                            </div>
+                </div>
+            </div>
+
+            <div class="pages-footer">
+
+                 <button class="footer-btn" id="next-btn">
+                     <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="{% static 'images/icons8-next-100.png' %}" onclick="window.location.href= {% url 'core:page_two' %}" >-->
+<!--                    <img class="footer-next-btn-img2" src="{% static 'images/icons8-right-100.png' %}" onclick="window.location.href= {% url 'core:page_two' %}">-->
+
+                 </button>
+                 <span class="page-number">۳</span>
+                 <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:page_two' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:page_two' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+
+
+                 <hr class="footer-line" />
+            </div>
+            </form>
+        </div>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <link rel="stylesheet" href="./../static/css/styles.css"> 
+</head>
+<body>
+    <div class="container translate-container">
+        <div class="header2">
+            <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
+            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        </div>
+        <div class="content2">
+            <img class="form-status" src="{% static 'images/S2@3x.jpeg' %}" alt="University Logo" />
+            <div class="main-content">
+                <form id="quiz-form1" class="quiz-form1" dir="rtl" method="post" novalidate>
+                    {% csrf_token %}
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">وضعیت تاهل</p>
+                        </div>
+                        <div class="options">
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="0" name="martial_status" value="مجرد">
+                                <label class="option" for="0">مجرد</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="1" name="martial_status" value="متأهل">
+                                <label class="option" for="1">متأهل</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="answer" id="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">ایا سیگار مصرف می کنید؟</p>
+                        </div>
+                        <div class="options">
+
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="00" name="smoke" value="بله">
+                                <label class="option" for="00">بله</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="01" name="smoke" value="خیر">
+                                <label class="option" for="01">خیر</label>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="answer" class="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">ایا سابقه درد های عضلانی اسکلتی پیش از ان داشته اید؟</p>
+                        </div>
+                        <div class="options">
+
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="000" name="pain_sckelete" value="بله">
+                                <input type="hidden" class="options-radio-page1" name="pain_sckelete_number" value="0">
+                                <label class="option" for="000">بله</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="001" name="pain_sckelete" value="خیر">
+                                <label class="option" for="001">خیر</label>
+                            </div>
+
+
+                        </div>
+                        <input type="hidden" name="answer" class="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">ایا سابقه فامیلی درد کمر در فامیل درجه یک داشته اید؟</p>
+                        </div>
+                        <div class="options">
+
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="0000" name="pain_family_waist" value="بله">
+                                <label class="option" for="0000">بله</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="00001" name="pain_family_waist" value="خیر">
+                                <label class="option" for="00001">خیر</label>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="answer" class="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">ایا کمردرد شما بدنبال ضربه ایجاد شده است؟</p>
+                        </div>
+                        <div class="options">
+
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="02" name="back_pain_after_impact" value="بله">
+                                <label class="option" for="02">بله</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="03" name="back_pain_after_impact" value="خیر">
+                                <label class="option" for="03">خیر</label>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="answer" class="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">ایا سابقه جراحی ستون فقرات در فامیل درجه یک داشته اید؟</p>
+                        </div>
+                        <div class="options">
+
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="04" name="spain_sargery" value="بله">
+                                <label class="option" for="04">بله</label>
+                            </div>
+                            <div class="option-container-page1">
+                                <span class="square"></span>
+                                <input type="radio" class="options-radio-page1" id="05" name="spain_sargery" value="خیر">
+                                <label class="option" for="05">خیر</label>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="answer" class="selected-answer" />
+                    </div>
+                    
+                    
+                    <div id="quiz-form1-div" class="quiz-form" dir="rtl">
+                        <div class="question-container2">
+                            <span class="status-indicator-out">
+                                <span class="status-indicator"></span>
+                            </span>
+                            <p class="question">چند روز از شروع کمردرد شما می گذرد؟</p>
+                        </div>
+                        <input class="input-page1" type="text" id="daysAfterBackache" name="back_pain" placeholder="ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ  روز">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="pages-footer">
+                <button class="footer-btn" id="next-btn" type="button">
+                    <input class="footer-next-btn-img1" type="image" src="{% static 'images/icons8-next-100.png' %}">
+                    <input class="footer-next-btn-img2" type="image" src="{% static 'images/icons8-right-100.png' %}">
+<!--                    <img class="footer-next-btn-img1" src="./../static/images/icons8-next-100.png" alt="Next">-->
+<!--                    <img class="footer-next-btn-img2" src="./../static/images/icons8-right-100.png" alt="Next">-->
+                </button>
+                 </form>
+                <span class="page-number">۱</span>
+                <button class="footer-btn" id="prev-btn">
+                    <a href="{% url 'core:base_page' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
+                    <a href="{% url 'core:base_page' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                </button>
+                <hr class="footer-line" />
+            </div>
+        </div>
+
+        <script src="./../static/js/page_one.js"></script>
+    </body>
+</html>

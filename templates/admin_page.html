@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <div style="text-align:center;">
+        <h3>دانلود فایل اکسل اطلاعات کاربران ثبت شده
+            <a href="{% url 'core:download_data' file_name='user_db.xlsx' %}">دانلود</a>
+        </h3>
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div style="text-align:center;">
+        <h4>Design and implementation:- Hamoon Studio Group</h4>
+        <h5>UI/UX Designer : Mehrana ...</h5>
+        <h5>FrontEnd Developer: Hosein ...</h5>
+        <h5>Backend Developer: Pedram Najafi</h5>
+    </div>
+</form>
+</body>
+</html>
