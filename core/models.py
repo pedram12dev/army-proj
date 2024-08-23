@@ -118,6 +118,7 @@ class UserResult(models.Model):
     anxiety = models.CharField(max_length=57,verbose_name="اضطراب")
     stress = models.CharField(max_length=57,verbose_name="استرس")
     chronic = models.CharField(max_length=150,null=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.id)

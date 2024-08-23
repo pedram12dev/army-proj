@@ -13,6 +13,7 @@ from django.http import FileResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class HomeView(View):
     def get(self, request):
         return render(request, 'home.html')
@@ -501,30 +502,31 @@ class PageFourteenView(View):
         if request.method == 'POST':
             UserResult.objects.create(
                 martial_status=page_one_session['martial_status'],
-                province = page_two_session['province'],
-                city= page_two_session['city'],
-                degree = page_two_session['tahsilat'],
-                job= page_two_session['job'],
-                weight = page_two_session['weight'],
-                height = page_two_session['height'],
-                time_goes= page_two_session['time_goes'],
-                smoke= page_one_session['smoke'],
-                sleep= page_two_session['sleep'],
+                province=page_two_session['province'],
+                city=page_two_session['city'],
+                degree=page_two_session['tahsilat'],
+                job=page_two_session['job'],
+                weight=page_two_session['weight'],
+                height=page_two_session['height'],
+                time_goes=page_two_session['time_goes'],
+                smoke=page_one_session['smoke'],
+                sleep=page_two_session['sleep'],
                 history_skeleton_pain=page_one_session['pain_sckelete'],
                 spain_surgery=page_one_session['spain_sargery'],
                 pain_family=page_one_session['pain_family_waist'],
                 back_pain_after_impact=page_one_session['back_pain_after_impact'],
-                back_pain= page_one_session['back_pain'],
-                pain_intensity_score= page_one_session['pain_sckelete_number'],
+                back_pain=page_one_session['back_pain'],
+                pain_intensity_score=page_one_session['pain_sckelete_number'],
                 pain_waist=page_three_session['key'],
-                odi= page_nine_session['score_result'],
+                odi=page_nine_session['score_result'],
                 disability_level=page_nine_session['oswestry_result'],
-                depression= page_thirteen_session['final_depression_result'],
+                depression=page_thirteen_session['final_depression_result'],
                 anxiety=page_thirteen_session['final_anxiety_result'],
-                stress = page_thirteen_session['final_stress_result']
+                stress=page_thirteen_session['final_stress_result']
             )
             return redirect('core:page_fifteen')
         return render(request, 'page_fourteen.html')
+
 
 class PageFifteenView(View):
     form_class = ...
@@ -546,13 +548,15 @@ class PageSixteenView(View):
     def post(self, request):
         pass
 
-class AdminDataView(LoginRequiredMixin,View):
-    def get(self,request):
-        return render(request,'admin_page.html')
 
-    def post(self,request):
+class AdminDataView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'admin_page.html')
+
+    def post(self, request):
         if request.method == 'POST':
             return redirect('core:download_data')
+
 
 def download_file(request, file_name):
     file_path = settings.BASE_DIR / file_name

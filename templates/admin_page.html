@@ -1,25 +1,38 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <link rel="stylesheet" href="./../static/css/styles.css">
 </head>
 <body>
-<form action="" method="post">
-    {% csrf_token %}
-    <div style="text-align:center;">
-        <h3>دانلود فایل اکسل اطلاعات کاربران ثبت شده
-            <a href="{% url 'core:download_data' file_name='user_db.xlsx' %}">دانلود</a>
-        </h3>
+    <div class="container translate-container">
+        <div class="content-panel" >
+            <form class="form-panel" action="" method="post">
+                {% csrf_token %}
+                <div class="header-panel" >
+                    <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
+                    <h1 class="header-topic" style="text-align: center; margin-right: 100px;">پنل مدیریت</h1>
+                </div>
+                <div class="exel-download-div">
+                    <h4 class="exel-download-text">دانلود فایل اکسل اطلاعات کاربران ثبت شده</h4>
+                        <a class="exel_download-btn" href="{% url 'core:download_data' file_name='user_db.xlsx' %}">دانلود</a>
 
+
+                </div>
+
+                <div class="developerTeam_div">
+                    <hr>
+                    <h4>:Design and implementation
+                        <br> Hamoon Studio Group</h4>
+                    <h5>UI/UX Designer : Mehrana Abian</h5>
+                    <h5>FrontEnd Developer: Hossein Hosseini</h5>
+                    <h5>Backend Developer: Pedram Najafi</h5>
+                </div>
+            </form>
+        </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div style="text-align:center;">
-        <h4>Design and implementation:- Hamoon Studio Group</h4>
-        <h5>UI/UX Designer : Mehrana ...</h5>
-        <h5>FrontEnd Developer: Hosein ...</h5>
-        <h5>Backend Developer: Pedram Najafi</h5>
-    </div>
-</form>
 </body>
 </html>
