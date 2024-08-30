@@ -3,39 +3,43 @@ body {
     padding: 0;
     font-family: 'Vazir', Arial, sans-serif;
     direction: rtl;
-    min-height: 100vh;
     display: block;
     text-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
     align-items: center;
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    -o-align-self: center;
     align-self: center;
-    font-family:  sans-serif;
+    font-family: 'Vazir', Arial, sans-serif;
     margin: 0;
     padding: 0 0 5% 0;
     font-family: 'Vazir', Arial, sans-serif;
     direction: rtl;
-    min-height: 100vh;
     display: block;
 }
 
 
-
-
 .content1 {
-    display: flex;          
-    flex-direction: column; 
-    align-items: center;    
-    text-align: center;     
-    margin: 20px;          
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
 }
 
 .introduction-text {
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
 }
 
 .content1-img {
-    max-width: 100%;       
-    height: auto;          
-    margin-bottom: 20px;   
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 
@@ -119,7 +123,7 @@ body {
     margin: 1% auto;
     border: 4px solid rgb(1, 69, 10);
     border-radius: 20px;
-    height: 843px; 
+    height: 843px;
 
 }
 
@@ -221,7 +225,7 @@ body {
 #quiz-form1-div {
     direction: rtl;
     font-family: Arial, sans-serif;
-    transform: translate(29px,-10px);
+    transform: translate(29px,-35px);
 }
 
 
@@ -229,7 +233,8 @@ body {
 #quiz-form2-div {
     direction: rtl;
     font-family: Arial, sans-serif;
-    transform: translate(80px,-18px);
+    transform: translate(80px,0px);
+    margin-top: 15px;
 }
 
 .input-page1{
@@ -272,11 +277,11 @@ body {
 
 /*-----------------------------------------*/
 
+
+
 @font-face {
     font-family: 'Vazir';
-    src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot');
-    src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot?#iefix') format('embedded-opentype'),
-         url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff2') format('woff2'),
+    src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff2') format('woff2'),
          url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff') format('woff'),
          url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.ttf') format('truetype');
     font-weight: normal;
@@ -286,7 +291,7 @@ body {
 
 
 .question-container{
-    margin-top: 5.5%;
+    margin-top: -2.5%;
     width: 100%;
     direction: rtl;
     display: flex;
@@ -310,15 +315,12 @@ body {
 
 
 .question-container3{
-    margin-top: 2%;
+    margin-top: 0%;
     width: 115%;
     direction: rtl;
     display: flex;
     align-items: center;
-    display: flex;
-    margin-bottom: 10px;
-    transform: translate(-70px,14px);
-
+    transform: translate(-70px,0px);
 }
 
 
@@ -406,6 +408,7 @@ body {
     position:absolute;
     background-color: #00000000;
     transform: translateY(800px);
+    overflow: hidden;
 }
 
 .pages-footer-exp{
@@ -416,6 +419,7 @@ body {
     position:absolute;
     background-color: #00000000;
     transform: translateY(695px);
+    overflow: hidden;
 }
 
 .pages-footer-14 {
@@ -977,8 +981,8 @@ cursor: pointer;
   }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: 'Vazir', Arial, sans-serif;
+
 }
 
 
@@ -1008,7 +1012,35 @@ code {
 
 
 .square.selected {
-    background-color: gray; /* Color when selected */
+    background-color: gray;
+}
+
+.quiz-form .square{
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    margin-left: 10px;
+    border: 1px solid #d76b23;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.quiz-form .square.selected {
+    background-color: gray;
+}
+
+.quiz-form3-1 .square{
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    margin-left: 10px;
+    border: 1px solid #d76b23;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.quiz-form3-1 .square.selected{
+    background-color: gray;
 }
 
 
@@ -1043,6 +1075,47 @@ code {
     cursor: pointer;
 }
 
+
+.option-container-page1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 110%;
+}
+
+.options-radio-page1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    direction: rtl;
+    display: none;
+    text-align: right;
+    font-size: 20px;
+}
+
+.square.selected {
+    background-color: gray;
+}
+
+.option-container-page10 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 110%;
+}
+
+.options-radio-page10 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    direction: rtl;
+    display: none;
+    text-align: right;
+    font-size: 20px;
+}
+
+
+
 /*----------------panel page------------------*/
 
 
@@ -1050,7 +1123,7 @@ code {
     direction: rtl;
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers items vertically */
+    align-items: center;
     text-align: center;
     margin: 1% auto;
     border: 4px solid rgb(1, 69, 10);
@@ -1084,7 +1157,7 @@ code {
 
 
 
-a:link, a:visited {
+.exel_download-btn:link, .exel_download-btn:visited {
     text-decoration: none;
     color: rgb(255, 255, 255);
     background-color: #3C5D50;
@@ -1093,12 +1166,12 @@ a:link, a:visited {
     border-radius: 15px;
 }
 
-a:hover {
+.exel_download-btn:hover {
     background-color: #263a32;
     color: rgb(252, 252, 252);
 }
 
-a:active {
+.exel_download-btn:active {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 }
@@ -1122,4 +1195,3 @@ hr{
 h5{
     margin-top: -10px;
 }
-

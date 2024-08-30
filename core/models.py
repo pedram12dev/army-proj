@@ -1,6 +1,7 @@
 from django.db import models
 from iranian_cities.fields import OstanField, ShahrestanField
 
+
 class Province(models.Model):
     name = models.CharField(max_length=56)
     province_id = models.IntegerField()
@@ -21,6 +22,7 @@ class City(models.Model):
 
     def __iter__(self):
         yield self.name
+
 
 class UserQuiz(models.Model):
     class MartialStatus(models.TextChoices):
@@ -94,30 +96,61 @@ class PageThree(models.Model):
 
 
 class UserResult(models.Model):
-    martial_status = models.CharField(max_length=55,verbose_name="وضعیت تأهل")
+    martial_status = models.CharField(max_length=55, verbose_name="وضعیت تأهل")
     province = models.CharField(max_length=75, verbose_name="محل سکونت/استان")
-    city = models.CharField(max_length=75,verbose_name="محل سکونت/شهر")
+    city = models.CharField(max_length=75, verbose_name="محل سکونت/شهر")
     degree = models.CharField(max_length=75, verbose_name="مقطع تحصیلی")
-    job = models.CharField(max_length=75,verbose_name="شغل پیش از شروع خدمت")
+    job = models.CharField(max_length=75, verbose_name="شغل پیش از شروع خدمت")
     weight = models.IntegerField(verbose_name="وزن")
     height = models.IntegerField(verbose_name="قد")
-    bmi = models.DecimalField(max_digits=10, decimal_places=8,null=True,blank=True)
+    bmi = models.DecimalField(max_digits=10, decimal_places=8, null=True, blank=True)
     time_goes = models.IntegerField(verbose_name="مدت زمان سپری شده از خدمت")
-    smoke = models.CharField(max_length=12,verbose_name="آیا سیگار مصرف میکنید؟")
-    sleep = models.CharField(max_length=75,verbose_name="وضعیت خواب ")
-    history_skeleton_pain = models.CharField(max_length=11,verbose_name="سابقه ی درد های عصلانی استخوانی")
-    spain_surgery = models.CharField(max_length=11,verbose_name="سابقه ی جراحی ستون فقرات")
-    pain_family = models.CharField(max_length=11,verbose_name="سابقه فامیلی درد های عضلانی")
-    back_pain_after_impact= models.CharField(max_length=11, verbose_name="آیا کمر درد شما به دنبال ضربه ایجاد شده است؟")
+    smoke = models.CharField(max_length=12, verbose_name="آیا سیگار مصرف میکنید؟")
+    sleep = models.CharField(max_length=75, verbose_name="وضعیت خواب ")
+    history_skeleton_pain = models.CharField(max_length=11, verbose_name="سابقه ی درد های عصلانی استخوانی")
+    spain_surgery = models.CharField(max_length=11, verbose_name="سابقه ی جراحی ستون فقرات")
+    pain_family = models.CharField(max_length=11, verbose_name="سابقه فامیلی درد های عضلانی")
+    back_pain_after_impact = models.CharField(max_length=11,
+                                              verbose_name="آیا کمر درد شما به دنبال ضربه ایجاد شده است؟")
     back_pain = models.IntegerField(verbose_name="چند روز از شروع کمر درد شما میگذرد ؟")
-    pain_intensity_score = models.IntegerField(verbose_name="نمره به شدت درد")
     pain_waist = models.IntegerField()
     odi = models.IntegerField()
     disability_level = models.CharField(max_length=150)
-    depression = models.CharField(max_length=57,verbose_name="افسردگی")
-    anxiety = models.CharField(max_length=57,verbose_name="اضطراب")
-    stress = models.CharField(max_length=57,verbose_name="استرس")
-    chronic = models.CharField(max_length=150,null=True,blank=True)
+    depression = models.CharField(max_length=57, verbose_name="افسردگی")
+    anxiety = models.CharField(max_length=57, verbose_name="اضطراب")
+    stress = models.CharField(max_length=57, verbose_name="استرس")
+    chronic = models.CharField(max_length=150, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class UserResultFinal(models.Model):
+    martial_status = models.CharField(max_length=55, verbose_name="وضعیت تأهل",null=True,blank=True)
+    province = models.CharField(max_length=75, verbose_name="محل سکونت/استان",null=True,blank=True)
+    city = models.CharField(max_length=75, verbose_name="محل سکونت/شهر",null=True,blank=True)
+    degree = models.CharField(max_length=75, verbose_name="مقطع تحصیلی",null=True,blank=True)
+    job = models.CharField(max_length=75, verbose_name="شغل پیش از شروع خدمت",null=True,blank=True)
+    weight = models.IntegerField(verbose_name="وزن",null=True,blank=True)
+    height = models.IntegerField(verbose_name="قد",null=True,blank=True)
+    bmi = models.DecimalField(max_digits=10, decimal_places=8, null=True, blank=True)
+    time_goes = models.IntegerField(verbose_name="مدت زمان سپری شده از خدمت",null=True,blank=True)
+    smoke = models.CharField(max_length=12, verbose_name="آیا سیگار مصرف میکنید؟",null=True,blank=True)
+    sleep = models.CharField(max_length=75, verbose_name="وضعیت خواب ",null=True,blank=True)
+    history_skeleton_pain = models.CharField(max_length=11, verbose_name="سابقه ی درد های عصلانی استخوانی",null=True,blank=True)
+    spain_surgery = models.CharField(max_length=11, verbose_name="سابقه ی جراحی ستون فقرات",null=True,blank=True)
+    pain_family = models.CharField(max_length=11, verbose_name="سابقه فامیلی درد های عضلانی",null=True,blank=True)
+    back_pain_after_impact = models.CharField(max_length=11,
+                                              verbose_name="آیا کمر درد شما به دنبال ضربه ایجاد شده است؟",null=True,blank=True)
+    back_pain = models.IntegerField(verbose_name="چند روز از شروع کمر درد شما میگذرد ؟",null=True,blank=True)
+    pain_waist = models.IntegerField(null=True,blank=True)
+    odi = models.IntegerField(null=True,blank=True)
+    disability_level = models.CharField(max_length=150,null=True,blank=True)
+    depression = models.CharField(max_length=57, verbose_name="افسردگی",null=True,blank=True)
+    anxiety = models.CharField(max_length=57, verbose_name="اضطراب",null=True,blank=True)
+    stress = models.CharField(max_length=57, verbose_name="استرس",null=True,blank=True)
+    chronic = models.CharField(max_length=150, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -8,11 +8,17 @@ from utils import *
 import json
 from .disability import determine_disability_level, determine_stress_level, determine_anxiety_level, \
     determine_depression_level
-from .models import UserResult
+from .models import UserResult,UserResultFinal
 from django.http import FileResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+import warnings
+import pandas as pd
+import joblib
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+import pickle
+from .ai_data import data_result
 
 class HomeView(View):
     def get(self, request):
@@ -516,7 +522,6 @@ class PageFourteenView(View):
                 pain_family=page_one_session['pain_family_waist'],
                 back_pain_after_impact=page_one_session['back_pain_after_impact'],
                 back_pain=page_one_session['back_pain'],
-                pain_intensity_score=page_one_session['pain_sckelete_number'],
                 pain_waist=page_three_session['key'],
                 odi=page_nine_session['score_result'],
                 disability_level=page_nine_session['oswestry_result'],
@@ -535,7 +540,35 @@ class PageFifteenView(View):
         return render(request, 'page_fifteen.html')
 
     def post(self, request):
+        page_one_session = request.session['page_one']
+        page_two_session = request.session['page_two']
+        page_three_session = request.session['page_three']
+        page_nine_session = request.session['page_nine']
+        page_thirteen_session = request.session['page_thirteen']
         if request.method == 'POST':
+            UserResultFinal.objects.create(
+                martial_status=page_one_session['martial_status'],
+                province=page_two_session['province'],
+                city=page_two_session['city'],
+                degree=page_two_session['tahsilat'],
+                job=page_two_session['job'],
+                weight=page_two_session['weight'],
+                height=page_two_session['height'],
+                time_goes=page_two_session['time_goes'],
+                smoke=page_one_session['smoke'],
+                sleep=page_two_session['sleep'],
+                history_skeleton_pain=page_one_session['pain_sckelete'],
+                spain_surgery=page_one_session['spain_sargery'],
+                pain_family=page_one_session['pain_family_waist'],
+                back_pain_after_impact=page_one_session['back_pain_after_impact'],
+                back_pain=page_one_session['back_pain'],
+                pain_waist=page_three_session['key'],
+                odi=page_nine_session['score_result'],
+                disability_level=page_nine_session['oswestry_result'],
+                depression=page_thirteen_session['final_depression_result'],
+                anxiety=page_thirteen_session['final_anxiety_result'],
+                stress=page_thirteen_session['final_stress_result'],
+                chronic=data_result)
             return redirect('core:page_sixteen')
         return render(request, 'page_fifteen.html')
 
@@ -563,3 +596,5 @@ def download_file(request, file_name):
     response = FileResponse(open(file_path, 'rb'))
     response['Content-Disposition'] = 'attachment; filename="%s"' % file_name
     return response
+
+
