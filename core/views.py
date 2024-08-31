@@ -478,9 +478,6 @@ class PageThirteenView(View):
             finally_stress_result = determine_stress_level(stress_result)
             finally_anxiety_result = determine_anxiety_level(anxiety_result)
             finally_depression_result = determine_depression_level(depression_result)
-            print(finally_stress_result)
-            print(finally_anxiety_result)
-            print(finally_depression_result)
             request.session['page_thirteen'] = {
                 'stress_4': stress_result,
                 'anxiety_4': anxiety_result,
@@ -489,23 +486,11 @@ class PageThirteenView(View):
                 'final_anxiety_result': finally_anxiety_result,
                 'final_depression_result': finally_depression_result,
             }
-            print(request.session['page_thirteen'])
-            return redirect('core:page_fourteen')
-        return render(request, 'page_thirteen.html', {'form': form})
-
-
-class PageFourteenView(View):
-
-    def get(self, request):
-        return render(request, 'page_fourteen.html')
-
-    def post(self, request):
-        page_one_session = request.session['page_one']
-        page_two_session = request.session['page_two']
-        page_three_session = request.session['page_three']
-        page_nine_session = request.session['page_nine']
-        page_thirteen_session = request.session['page_thirteen']
-        if request.method == 'POST':
+            page_one_session = request.session['page_one']
+            page_two_session = request.session['page_two']
+            page_three_session = request.session['page_three']
+            page_nine_session = request.session['page_nine']
+            page_thirteen_session = request.session['page_thirteen']
             UserResult.objects.create(
                 martial_status=page_one_session['martial_status'],
                 province=page_two_session['province'],
@@ -527,17 +512,17 @@ class PageFourteenView(View):
                 disability_level=page_nine_session['oswestry_result'],
                 depression=page_thirteen_session['final_depression_result'],
                 anxiety=page_thirteen_session['final_anxiety_result'],
-                stress=page_thirteen_session['final_stress_result']
+                stress=page_thirteen_session['final_stress_result'],
+                chronic = data_result,
             )
-            return redirect('core:page_fifteen')
-        return render(request, 'page_fourteen.html')
+            return redirect('core:page_fourteen')
+        return render(request, 'page_thirteen.html', {'form': form})
 
 
-class PageFifteenView(View):
-    form_class = ...
+class PageFourteenView(View):
 
     def get(self, request):
-        return render(request, 'page_fifteen.html')
+        return render(request, 'page_fourteen.html')
 
     def post(self, request):
         page_one_session = request.session['page_one']
@@ -568,7 +553,31 @@ class PageFifteenView(View):
                 depression=page_thirteen_session['final_depression_result'],
                 anxiety=page_thirteen_session['final_anxiety_result'],
                 stress=page_thirteen_session['final_stress_result'],
-                chronic=data_result)
+                percentage=data_result,
+            )
+            return redirect('core:page_fifteen')
+        return render(request, 'page_fourteen.html')
+
+
+class PageFifteenView(View):
+    form_class = ...
+
+    def get(self, request):
+        chronic = UserResultFinal.objects.last()
+        value = chronic.percentage
+        data= value.replace('[', '').replace(']','').split(' ')
+        had = int(float(data[0]) *100)
+        mozmen = int(float(data[1]) *100)
+        if mozmen > had:
+            result = mozmen
+            mozmen = " کمر درد شما در آینده مزمن خواهد شد"
+        else:
+            result = had
+            had = 'شما به کمر درد حاد مبتلا شده اید '
+        return render(request, 'page_fifteen.html', {'result':result,'mozmen':mozmen,'had':had})
+
+    def post(self, request):
+        if request.method == 'POST':
             return redirect('core:page_sixteen')
         return render(request, 'page_fifteen.html')
 

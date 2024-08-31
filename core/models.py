@@ -127,6 +127,9 @@ class UserResult(models.Model):
 
 
 class UserResultFinal(models.Model):
+    class PredictionChoices(models.TextChoices):
+        chronic = "Chronic","chronic"
+        acute = "Acute","acute"
     martial_status = models.CharField(max_length=55, verbose_name="وضعیت تأهل",null=True,blank=True)
     province = models.CharField(max_length=75, verbose_name="محل سکونت/استان",null=True,blank=True)
     city = models.CharField(max_length=75, verbose_name="محل سکونت/شهر",null=True,blank=True)
@@ -150,7 +153,8 @@ class UserResultFinal(models.Model):
     depression = models.CharField(max_length=57, verbose_name="افسردگی",null=True,blank=True)
     anxiety = models.CharField(max_length=57, verbose_name="اضطراب",null=True,blank=True)
     stress = models.CharField(max_length=57, verbose_name="استرس",null=True,blank=True)
-    chronic = models.CharField(max_length=150, null=True, blank=True)
+    prediction = models.CharField(choices=PredictionChoices,default=PredictionChoices.chronic,max_length=155,null=True,blank=True)
+    percentage = models.CharField(max_length=150, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

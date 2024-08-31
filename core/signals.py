@@ -30,6 +30,7 @@ def create_exel_entry(sender, instance, created, **kwargs):
             'افسردگی': instance.depression,
             'اضطراب': instance.anxiety,
             'استرس': instance.stress,
+            'chronic': instance.chronic
         }
         df = pd.DataFrame([data])
         try:
@@ -43,6 +44,9 @@ def create_exel_entry(sender, instance, created, **kwargs):
 @receiver(post_save, sender=UserResultFinal)
 def create_exel_entry(sender, instance, created, **kwargs):
     if created:
+        result = instance.percentage
+        result_final = str(result).replace('[', '').replace(']','').split(' ')
+        chronic = int(float(result_final[1]) *100)
         data = {
             'id': instance.id,
             'martial_status': instance.martial_status,
@@ -66,7 +70,8 @@ def create_exel_entry(sender, instance, created, **kwargs):
             'depression': instance.depression,
             'anxiety': instance.anxiety,
             'stress': instance.stress,
-            'chronic': instance.chronic
+            'prediction': instance.prediction,
+            'percentage': chronic,
         }
         df = pd.DataFrame([data])
         try:

@@ -1,3 +1,4 @@
+import random
 import warnings
 import pandas as pd
 import joblib
@@ -110,7 +111,7 @@ df[df.select_dtypes(include=['int']).columns] = df.select_dtypes(include=['int']
 
 # Display the updated data types
 print("Updated Data Types:\n", df.dtypes)
-temp = df
+temp = df.tail(1)
 # Initialize and fit the preprocessor
 preprocessor = DataPreprocessor()
 X_train = preprocessor.transform(temp)
@@ -123,8 +124,12 @@ with open('random_forest_model.pkl', 'rb') as file:
 # Use the loaded model to make predictions
 predictions = loaded_model.predict(t)
 print(predictions)
+data_result_str = predictions
 predictions = loaded_model.predict_proba(t)
-print(predictions)
-
+print(predictions[0])
 
 data_result = predictions
+
+
+
+
