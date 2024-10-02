@@ -1,33 +1,42 @@
-{% extends 'base.html' %}
 {% load static %}
 
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<body>
 
-{% block content %}
-<div class="container">
-        <div class="header2">
-
-            <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" />
-
-            <h1 class="header-topic">فرم جمع آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
-        </div>
-        <div class="content1">
+<div class="container-home">
+    <div class="header2">
+        <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}"
+            alt="AJA University Logo" />
+        <h1 class="header-topic-home">فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</h1>
+    </div>
+    <div class="content-home">
         <h3 class="introduction-text-topic">بسمه تعالی</h3>
+        <p class="introduction-text">
+    این برنامه طی فرایند تحقیقاتی و زیر نظر پژوهشگاه عالی طب نظامی دانشگاه علوم پزشکی ارتش جمهوری اسلامی ایران طراحی و ساخته شده است.
+    این برنامه از مدل‌سازی پیش‌بینی مبتنی بر هوش مصنوعی استفاده می‌کند تا ریسک مزمن شدن کمردرد را ارزیابی کند. بر اساس داده‌های ارائه شده توسط کاربر در مورد علائم و عوامل خطر، این برنامه احتمال ابتلا به کمردرد مزمن را پیش‌بینی می‌کند.
+    علاوه بر تحلیل پیش‌بینی، این برنامه همچنین برنامه‌های ورزشی شخصی‌سازی شده ای را برای تقویت هسته مرکزی بدن، بهبود انعطاف‌پذیری و مدیریت کمردرد ارائه می‌دهد. این تمرینات طراحی شده اند تا از ایجاد کمردرد مزمن جلوگیری کنند یا علائم موجود را تسکین دهند.
+    مدل‌سازی پیش‌بینی و توصیه‌های ورزشی بر اساس تحقیقات و داده‌های جمع‌آوری شده از جمعیت‌های نظامی است. در حالی که این برنامه می‌تواند اطلاعات مفیدی ارائه دهد، جایگزینی برای مشاوره پزشکی حرفه‌ای نیست. کاربرانی که هرگونه بیماری قبلی ستون فقرات، کمر یا عصبی دارند باید همیشه قبل از شروع یک برنامه ورزشی جدید با پزشک خود مشورت کنند.
+</p>
+        <img class="content1-img" src="{% static 'images/12222@3x.png' %}" alt="Description of Image 4" />
 
-            <p class="introduction-text">
-                            این برنامه طی فرایند تحقیقاتی و زیر نظر مرکز تحقیقات بیومکانیک دانشکده پزشکی دانشگاه علوم پزشکی ارتش جمهوری اسلامی ایران طراحی و ساخته شده است.
-            این برنامه از مدل‌سازی پیش‌بینی مبتنی بر هوش مصنوعی استفاده می‌کند تا ریسک مزمن شدن کمردرد را ارزیابی کند. بر اساس داده‌های ارائه شده توسط کاربر در مورد علائم و عوامل خطر، این برنامه احتمال ابتلا به کمردرد مزمن را پیش‌بینی می‌کند.
-            علاوه بر تحلیل پیش‌بینی، این برنامه همچنین برنامه‌های ورزشی شخصی‌سازی شده ای را برای تقویت هسته مرکزی بدن، بهبود انعطاف‌پذیری و مدیریت کمردرد ارائه می‌دهد. این تمرینات طراحی شده اند تا از ایجاد کمردرد مزمن جلوگیری کنند یا علائم موجود را تسکین دهند.
-            مدل‌سازی پیش‌بینی و توصیه‌های ورزشی بر اساس تحقیقات و داده‌های جمع‌آوری شده از جمعیت‌های نظامی است. در حالی که این برنامه می‌تواند اطلاعات مفیدی ارائه دهد، جایگزینی برای مشاوره پزشکی حرفه‌ای نیست. کاربرانی که هرگونه بیماری قبلی ستون فقرات، کمر یا عصبی دارند باید همیشه قبل از شروع یک برنامه ورزشی جدید با پزشک خود مشورت کنند.
+        <span class="button-wrapper">
+                <button class="introduction-btn" onclick="window.location.href = {% url 'core:page_one' %}">شروع پرسشنامه</button>
+        </span>
+    </div>
 
-            </p>
-            <img class="content1-img" src="{% static 'images/12222@3x.png' %}" alt="Description of Image 4" />
-
-<!--            <a href="">-->
-                <span class="button-wrapper">
-                    <button class="introduction-btn" onclick="window.location.href = {% url 'core:page_one' %}">شروع پرسشنامه</button>
-                </span>
-<!--            </a>-->
-        </div>
 </div>
+    <a href="mailto:info@ajalowbackpainai.com" style="text-decoration: none; padding:20px;">ارتباط با پشتیبانی</a>
+
 <script src="{% static 'js/page_one.js' %}"></script>
-{% endblock %}
+
+
+
+</body>
+</html>
+

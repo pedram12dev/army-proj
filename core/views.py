@@ -18,7 +18,7 @@ import joblib
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 import pickle
-from .ai_data import data_result
+# from .ai_data import data_result
 
 class HomeView(View):
     def get(self, request):
@@ -40,6 +40,7 @@ class PageOneView(View):
         if form.is_valid():
             cd = form.cleaned_data
             request.session['page_one'] = {
+                'age': cd['age'],
                 'martial_status': cd['martial_status'],
                 'smoke': cd['smoke'],
                 'pain_family_waist': cd['pain_family_waist'],
@@ -491,7 +492,109 @@ class PageThirteenView(View):
             page_three_session = request.session['page_three']
             page_nine_session = request.session['page_nine']
             page_thirteen_session = request.session['page_thirteen']
+            data_record = {
+                'age': [page_one_session['age'],page_one_session['age']],
+                'marital': [page_one_session['martial_status'],page_one_session['martial_status']],
+                'educate': [page_two_session['tahsilat'],page_two_session['tahsilat']],
+                'job':[page_two_session['job'],page_two_session['job']],
+                'weight':[page_two_session['weight'],page_two_session['weight']],
+                'height': [page_two_session['height'],page_two_session['height']],
+                'time_military': [page_two_session['time_goes'],page_two_session['time_goes']],
+                'smoke': [page_one_session['smoke'],page_one_session['smoke']],
+                'sleep_state': [page_two_session['sleep'],page_two_session['sleep']],
+                'eskelete_pain':[page_one_session['pain_sckelete'],page_one_session['pain_sckelete']],
+                'operate':[page_one_session['spain_sargery'],page_one_session['spain_sargery']],
+                'family_pain':[page_one_session['pain_family_waist'],page_one_session['pain_family_waist']],
+                'backpain_bit':[page_one_session['back_pain_after_impact'],page_one_session['back_pain_after_impact']],
+                'back_pain_time':[page_one_session['back_pain'],page_one_session['back_pain']],
+                'pain_waste':[page_three_session['key'],page_three_session['key']],
+                'ODI':[page_nine_session['score_result'],page_nine_session['score_result']],
+                'Disability Level': [page_nine_session['oswestry_result'],page_nine_session['oswestry_result']],
+                'depression':[page_thirteen_session['final_depression_result'],page_thirteen_session['final_depression_result']],
+                'anxiety':[page_thirteen_session['final_anxiety_result'],page_thirteen_session['final_anxiety_result']],
+                'stress': [page_thirteen_session['final_stress_result'],page_thirteen_session['final_stress_result']],
+            }
+            
+            df = pd.DataFrame.from_dict(data_record)
+            
+            
+
+            df.drop('age' , axis=1, inplace=True)
+            
+            
+            
+            
+            class DataPreprocessor:
+                def init(self):
+                    self.scaler = MinMaxScaler()
+                    self.encoder = OneHotEncoder(handle_unknown='ignore')
+                    self.column_transformer = None
+            
+                def fit(self, X, save_path='preprocessor.joblib'):
+                    # Ensure all categorical columns are of type string
+                    categorical_cols = X.select_dtypes(include=['object']).columns
+                    for col in categorical_cols:
+                        X[col] = X[col].astype(str)
+            
+                    # Identify numerical columns
+                    numerical_cols = X.select_dtypes(include=['int64', 'float64']).columns
+            
+                    # Create a column transformer for preprocessing
+                    self.column_transformer = ColumnTransformer(
+                        transformers=[
+                            ('num', self.scaler, numerical_cols),
+                            ('cat', self.encoder, categorical_cols)
+                        ]
+                    )
+            
+                    # Fit the column transformer
+                    self.column_transformer.fit(X)
+            
+                    # Save the fitted preprocessor
+                    joblib.dump(self.column_transformer, save_path)
+            
+                def transform(self, X):
+                    # Ensure all categorical columns are of type string
+                    categorical_cols = X.select_dtypes(include=['object']).columns
+                    for col in categorical_cols:
+                        X[col] = X[col].astype(str)
+            
+                    # Load the saved preprocessor
+                    self.column_transformer = joblib.load('preprocessor.joblib')
+            
+                    return self.column_transformer.transform(X)
+            
+                def fit_transform(self, X, save_path='preprocessor.joblib'):
+                    self.fit(X, save_path)
+                    return self.transform(X)
+            
+                def load(self, save_path='preprocessor.joblib'):
+                    self.column_transformer = joblib.load(save_path)
+                    
+            df[df.select_dtypes(include=['int']).columns] = df.select_dtypes(include=['int']).astype('float64')
+            
+            temp = df.copy()
+            temp = df.tail(1)
+          
+            # Initialize and fit the preprocessor
+            preprocessor = DataPreprocessor()
+            X_train = preprocessor.transform(temp)
+
+            
+            t = X_train[-1].reshape(1 , -1)
+            # Load the model from the file
+            with open('random_forest_model.pkl', 'rb') as file:
+                loaded_model = pickle.load(file)
+            
+            predictions = loaded_model.predict_proba(t)
+            
+            data_result = predictions
+            request.session['page_final'] = {
+                'data_result': data_result.tolist(),
+                }
+            
             UserResult.objects.create(
+                age = page_one_session['age'],
                 martial_status=page_one_session['martial_status'],
                 province=page_two_session['province'],
                 city=page_two_session['city'],
@@ -515,6 +618,7 @@ class PageThirteenView(View):
                 stress=page_thirteen_session['final_stress_result'],
                 chronic = data_result,
             )
+            
             return redirect('core:page_fourteen')
         return render(request, 'page_thirteen.html', {'form': form})
 
@@ -530,8 +634,13 @@ class PageFourteenView(View):
         page_three_session = request.session['page_three']
         page_nine_session = request.session['page_nine']
         page_thirteen_session = request.session['page_thirteen']
+        data_result = request.session['page_final']
+        data_result = data_result['data_result']
+        
+        
         if request.method == 'POST':
             UserResultFinal.objects.create(
+                age=page_one_session['age'],
                 martial_status=page_one_session['martial_status'],
                 province=page_two_session['province'],
                 city=page_two_session['city'],
@@ -555,6 +664,12 @@ class PageFourteenView(View):
                 stress=page_thirteen_session['final_stress_result'],
                 percentage=data_result,
             )
+            del request.session['page_one']
+            del request.session['page_two']
+            del request.session['page_three']
+            del request.session['page_nine']
+            del request.session['page_thirteen']
+            
             return redirect('core:page_fifteen')
         return render(request, 'page_fourteen.html')
 
@@ -565,16 +680,16 @@ class PageFifteenView(View):
     def get(self, request):
         chronic = UserResultFinal.objects.last()
         value = chronic.percentage
-        data= value.replace('[', '').replace(']','').split(' ')
-        had = int(float(data[0]) *100)
+        data= value.replace('[', '').replace(']','').replace(',','').split(' ')
+        # had = int(float(data[1]) *100)
         mozmen = int(float(data[1]) *100)
-        if mozmen > had:
-            result = mozmen
-            mozmen = " کمر درد شما در آینده مزمن خواهد شد"
+        result =""
+        if mozmen >= 71:
+            result = " کمر درد شما در آینده مزمن خواهد شد"
         else:
-            result = had
-            had = 'شما به کمر درد حاد مبتلا شده اید '
-        return render(request, 'page_fifteen.html', {'result':result,'mozmen':mozmen,'had':had})
+            result =  'شما به کمر درد حاد مبتلا شده اید '
+        
+        return render(request, 'page_fifteen.html', {'result':result})
 
     def post(self, request):
         if request.method == 'POST':
@@ -605,5 +720,25 @@ def download_file(request, file_name):
     response = FileResponse(open(file_path, 'rb'))
     response['Content-Disposition'] = 'attachment; filename="%s"' % file_name
     return response
+
+
+from django.http import JsonResponse
+from .models import City
+
+def get_cities_by_province(province_id):
+    cities = City.objects.filter(province_id=province_id)
+    return cities
+def get_cities(request):
+    if request.is_ajax():
+        try:
+            province_id = int(request.GET.get('province_id'))
+            cities = get_cities_by_province(province_id=province_id).order_by('name')
+            print(cities)
+            return JsonResponse({'cities': list(cities.values('name','id'))})
+        except (ValueError, City.DoesNotExist):
+            return JsonResponse({'error': 'Invalid province ID'})
+
+
+
 
 

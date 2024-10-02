@@ -5,20 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
-    <link rel="stylesheet" href="./../static/css/styles.css">
+    <title> فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
         <div class="container">
 
-            <img class="workout-img" src="./../static/file/S15@3x.PNG"/>
+            <img class="workout-img" src="{% static 'file/S15@3x.PNG' %}"/>
 
             <div class="workout-page-buttons">
                 <button class="workout-page-button" onclick="window.location.href={% url 'core:page_fifteen' %}">بازگشت</button>
             </div>
         </div>
 
-        <script src="./../static/js/page_sixteen.js.js"></script>
+        <script src="{% static 'js/page_sixteen.js' %}"></script>
 
 </body>
 </html>

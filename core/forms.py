@@ -8,14 +8,15 @@ class UserQuizForm(forms.Form):
     #     ('Y', 'بله'),
     #     ('N', 'خیر'),
     # ]
-    martial_status = forms.CharField(widget=forms.Select,required=False)
-    smoke = forms.CharField(widget=forms.RadioSelect,required=False)
-    pain_sckelete = forms.CharField(widget=forms.RadioSelect,required=False)
-    pain_family_waist = forms.CharField(widget=forms.RadioSelect,required=False)
-    spain_sargery = forms.CharField(widget=forms.RadioSelect,required=False)
-    back_pain_after_impact = forms.CharField(widget=forms.RadioSelect,required=False)
-    back_pain = forms.CharField(required=False)
-    pain_sckelete_number = forms.CharField(required=False)
+    age = forms.CharField()
+    martial_status = forms.CharField(widget=forms.Select)
+    smoke = forms.CharField(widget=forms.RadioSelect)
+    pain_sckelete = forms.CharField(widget=forms.RadioSelect)
+    pain_family_waist = forms.CharField(widget=forms.RadioSelect)
+    spain_sargery = forms.CharField(widget=forms.RadioSelect)
+    back_pain_after_impact = forms.CharField(widget=forms.RadioSelect)
+    back_pain = forms.CharField()
+    pain_sckelete_number = forms.CharField()
 
     # class Meta:
     #     model = UserQuiz
@@ -25,15 +26,7 @@ class UserQuizForm(forms.Form):
 
 
 class PageTwoForm(forms.ModelForm):
-    # province = forms.ModelChoiceField(queryset=Province.objects.all(), to_field_name='name',empty_label="لطفا استان خود را نتخاب کنید")
-    # city = forms.ModelChoiceField(queryset=City.objects.all(), to_field_name='name',empty_label="لطفا شهر خود را نتخاب کنید")
-    # city = forms.CharField(widget=forms.Select)
-    # tahsilat = forms.ChoiceField(choices=PageTwo.Tahsilat)
-    # weight = forms.CharField()
-    # height = forms.CharField()
-    # job = forms.CharField()
-    # time_goes = forms.CharField()
-    # sleep = forms.ChoiceField(choices=PageTwo.AmountOfSleepChoices)
+
 
     class Meta:
         model = PageTwo
@@ -44,9 +37,19 @@ class PageTwoForm(forms.ModelForm):
             'tahsilat': forms.Select(attrs={'class':'select-options'}),
             'sleep': forms.Select(attrs={'class':'select-options'}),
             'job': forms.TextInput(attrs={'class':'input-page2','placeholder':'ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ  شغل'}),
-            'time_goes': forms.TextInput(attrs={'class':'input-page2','placeholder':'ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ  عدد'}),
+            'time_goes': forms.TextInput(attrs={'class':'input-page2','placeholder':'ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ  روز'}),
 
         }
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['city'].queryset = City.objects.none()
+        if 'province' in self.data:
+            try:
+                province_id = int(self.data.get('province'))
+                self.fields['city'].queryset = City.objects.filter(province_id=province_id).order_by('name')
+            except (ValueError, TypeError):
+                pass
 
 class PageThreeForm(forms.ModelForm):
 

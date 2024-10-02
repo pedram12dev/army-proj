@@ -5,21 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
-    <link rel="stylesheet" href="./../static/css/styles.css"> 
+    <title> فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
 </head>
 <body>
     <div class="container translate-container">
         <div class="header2">
             <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
-            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        <h1 class="header-topic-home">فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</h1>
         </div>
 
         <div class="content-result">
             <div class="main-content">
                 <div class="result-page-div">
                     <div class="result-page-resultDiv">
-                        طبق تحلیل پرسشنامه به احتمال<br>{{result}}%  {{mozmen}}
+                        طبق تحلیل پرسشنامه  
+                        <br>
+                        
+                        {{result}}
+                       
+                            
                     </div>
                     <div class="result-page-suggestDiv">
                         برای رفع مشکلات ناشی از کمررد، از برنامه تمرینی زیر استفاده کنید.
@@ -27,26 +32,26 @@
                             {% csrf_token %}
                             <input type="submit" value="مشاهده برنامه تمرینی" id="result-observation-button" class="result-page-pdfBtn" style="margin-top: 10%;" src="{% url 'core:page_sixteen' %}">
                         </form>
-<!--                        <input type="submit" id="result-download-button" src="./../static/file/S15.pdf" class="result-page-pdfBtn" value="دریافت برنامه تمرینی">-->
-                            <a id="result-download-button" href="./../static/file/S15.pdf" class="result-page-pdfBtn">دریافت برنامه تمرینی</a>
+<!--                        <input type="submit" id="result-download-button" src="{% static 'file/S15.pdf' %}" class="result-page-pdfBtn" value="دریافت برنامه تمرینی">-->
+                            <a id="result-download-button" href="{% static 'file/S15.pdf' %}" class="result-page-pdfBtn">دریافت برنامه تمرینی</a>
 
 
                     </div>
 
                     <div>
-                        <div class="refresh-button" onclick="window.location.href='./home.html'">
+                        <div class="refresh-button" onclick="window.location.href='{% url "core:base_page" %}'">
                             <div class="reloadSingle">
                             </div>
                         </div>
                         <p class="reloadSingle-text">شروع دوباره</p>
                     </div>
-                    <img class="logo-result-watermark" src="./../static/images/AJA_University_of_Medical_Sciences.svg.png" alt="University Logo" />
+                    <img class="logo-result-watermark" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="./../static/js/page_fifteen.js"></script>
+    <script src="{% static 'js/page_fifteen.js' %}"></script>
 
 </body>
 </html>

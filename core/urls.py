@@ -23,4 +23,5 @@ urlpatterns = [
     path('page-sixteen/', views.PageSixteenView.as_view(), name='page_sixteen'),
     path('admin-page/', views.AdminDataView.as_view(), name='admin-data'),
     path('admin-data/<str:file_name>/', views.download_file,name='download_data'),
+    path('get_cities/', views.get_cities, name='get_cities'),
 ]

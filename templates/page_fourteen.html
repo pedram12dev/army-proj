@@ -5,17 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
-    <link rel="stylesheet" href="./../static/css/styles.css">
+    <title> فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 <div class="container translate-container">
             <div class="header2">
                 <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
-                <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        <h1 class="header-topic-home">فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</h1>
             </div>
             <div class="content">
-            <img class="form-status marginTop2 marginBottom" src="./../static/images/S12@3x.jpeg" alt="University Logo" />
+            <img class="form-status marginTop2 marginBottom" src="{% static 'images/S12@3x.jpeg' %}" alt="University Logo" />
                 <div class="main-content">
                         <div class="footer">
                     <div class="line-text">
@@ -47,15 +47,15 @@
                 <div class="pages-footer-14">
                 <span class="page-number">۱۴</span>
                     <button class="footer-btn" id="prev-btn">
-                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img1" src="./../static/images/icons8-left-100-2.png"></a>
-                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img2" src="./../static/images/icons8-left-100.png"></a>
+                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img1" src="{% static 'images/icons8-left-100-2.png' %}"></a>
+                        <a href="{% url 'core:page_thirteen' %}"><img class="footer-prev-btn-img2" src="{% static 'images/icons8-left-100.png' %}"></a>
                 </button>
 
                 </div>
                 <hr class="footer-line" />
             </div>
         </div>
-        <script src="./../static/js/page_fourteen.js"></script>
+        <script src="{% static 'js/page_fourteen.js' %}"></script>
 
 </body>
 </html>        

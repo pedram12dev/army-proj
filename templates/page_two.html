@@ -5,14 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</title>
+    <title> فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
     <div class="container">
         <div class="header2">
             <img class="logo" src="{% static 'images/AJA_University_of_Medical_Sciences.svg.png' %}" alt="University Logo" />
-            <h1 class="header-topic">فرم جمع‌آوری اطلاعات دانشکده پزشکی معاونت پژوهشی</h1>
+        <h1 class="header-topic-home">فرم جمع آوری اطلاعات پژوهشگاه عالی طب نظامی</h1>
         </div>
         <div class="content2">
             <img class="form-status" src="{% static 'images/S2@3x.jpeg' %}" alt="University Logo" />
@@ -112,6 +114,25 @@
             </div>
         </div>
     </div>
+        <script>
+            $(document).ready(function() {
+            $('#id_province').change(function() {
+                var provinceId = $(this).val();
+                $.ajax({
+                    url: '/get_cities/',
+                    data: {'province_id': provinceId},
+                    success: function(data) {
+                        var citySelect = $('#id_city');
+                        citySelect.empty();
+                        $.each(data.cities, function(index, city) {
+                            citySelect.append('<option value="' + city.id
+ + '">' + city.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
     <script src="{% static 'js/page_two.js' %}"></script>
 
 </body>

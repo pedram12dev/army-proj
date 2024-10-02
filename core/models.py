@@ -1,10 +1,11 @@
 from django.db import models
-from iranian_cities.fields import OstanField, ShahrestanField
+
 
 
 class Province(models.Model):
     name = models.CharField(max_length=56)
-    province_id = models.IntegerField()
+    slug = models.SlugField(max_length=56,null=True)
+    tel_prefix = models.CharField(max_length=56,null=True)
 
     def __str__(self):
         return self.name
@@ -14,15 +15,16 @@ class Province(models.Model):
 
 
 class City(models.Model):
+    # province = models.ForeignKey(Province,on_delete=models.CASCADE,related_name='cities',null=True)
     name = models.CharField(max_length=56)
-    province_id = models.IntegerField()
+    slug= models.SlugField(max_length=56,null=True)
+    province_id = models.IntegerField(null=True)
 
     def __str__(self):
         return self.name
 
     def __iter__(self):
         yield self.name
-
 
 class UserQuiz(models.Model):
     class MartialStatus(models.TextChoices):
@@ -32,7 +34,7 @@ class UserQuiz(models.Model):
     class YesOrNo(models.TextChoices):
         yes = "Y", ('بله')
         no = "N", ('خیر')
-
+    age = models.CharField(max_length=10,null=True,verbose_name="سن")
     martial_status = models.CharField(choices=MartialStatus, max_length=20, verbose_name='وضعیت تأهل')
     smoke = models.CharField(choices=YesOrNo, max_length=20, verbose_name='آیا سیگار مصرف میکنید؟')
     pain_sckelete = models.CharField(choices=YesOrNo, max_length=20,
@@ -61,14 +63,14 @@ class PageTwo(models.Model):
         BAD = "خوب نمیخوابم", ("خوب نمیخوابم")
         GORB = "گاهی خوب میخوابم و گاهی بد", ("گاهی خوب میخوابم و گاهی بد")
 
-    province = OstanField()
-    city = ShahrestanField()
+    province = models.ForeignKey(Province,on_delete=models.CASCADE)
+    city = models.ForeignKey(City,on_delete=models.CASCADE)
     tahsilat = models.CharField(choices=Tahsilat, max_length=50)
     weight = models.CharField(max_length=150, verbose_name="وزن")
     height = models.CharField(max_length=150, verbose_name="قد")
     time_goes = models.CharField(max_length=150, verbose_name="مدت زمان سپری شده از خدمت:")
     job = models.CharField(max_length=150, verbose_name="شغل")
-    sleep = models.CharField(max_length=30, choices=AmountOfSleepChoices, default=AmountOfSleepChoices.GOOD,
+    sleep = models.CharField(max_length=30, choices=AmountOfSleepChoices,
                              verbose_name="وضعیت خواب خود را چگونه میبینید؟")
 
     def __str__(self):
@@ -96,6 +98,7 @@ class PageThree(models.Model):
 
 
 class UserResult(models.Model):
+    age = models.CharField(max_length=10,null=True,verbose_name="سن")
     martial_status = models.CharField(max_length=55, verbose_name="وضعیت تأهل")
     province = models.CharField(max_length=75, verbose_name="محل سکونت/استان")
     city = models.CharField(max_length=75, verbose_name="محل سکونت/شهر")
@@ -130,6 +133,7 @@ class UserResultFinal(models.Model):
     class PredictionChoices(models.TextChoices):
         chronic = "Chronic","chronic"
         acute = "Acute","acute"
+    age = models.CharField(max_length=10,null=True,verbose_name="سن")
     martial_status = models.CharField(max_length=55, verbose_name="وضعیت تأهل",null=True,blank=True)
     province = models.CharField(max_length=75, verbose_name="محل سکونت/استان",null=True,blank=True)
     city = models.CharField(max_length=75, verbose_name="محل سکونت/شهر",null=True,blank=True)
