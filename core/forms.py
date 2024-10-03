@@ -4,10 +4,6 @@ from .models import Province, City
 
 
 class UserQuizForm(forms.Form):
-    # CHOICES = [
-    #     ('Y', 'بله'),
-    #     ('N', 'خیر'),
-    # ]
     age = forms.CharField()
     martial_status = forms.CharField(widget=forms.Select)
     smoke = forms.CharField(widget=forms.RadioSelect)
@@ -17,13 +13,7 @@ class UserQuizForm(forms.Form):
     back_pain_after_impact = forms.CharField(widget=forms.RadioSelect)
     back_pain = forms.CharField()
     pain_sckelete_number = forms.CharField()
-
-    # class Meta:
-    #     model = UserQuiz
-    #     fields = (
-    #         'martial_status', 'smoke', 'pain_sckelete', 'pain_family_waist', 'spain_sargery', 'back_pain_after_impact',
-    #         'back_pain')
-
+   
 
 class PageTwoForm(forms.ModelForm):
 
@@ -64,10 +54,6 @@ class PageThreeForm(forms.ModelForm):
 
 class PageFourForm(forms.Form):
     answer = forms.CharField(widget=forms.RadioSelect,required=False)
-
-    # def __init__(self,*args,**kwargs):
-    #     super().__init__(*args,**kwargs)
-    #     self.fields['answer'].initial = 0
 
 
 class PageFiveForm(forms.Form):
