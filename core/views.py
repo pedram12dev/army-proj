@@ -18,7 +18,6 @@ import joblib
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 import pickle
-# from .ai_data import data_result
 
 class HomeView(View):
     def get(self, request):
@@ -728,6 +727,8 @@ from .models import City
 def get_cities_by_province(province_id):
     cities = City.objects.filter(province_id=province_id)
     return cities
+
+
 def get_cities(request):
     if request.is_ajax():
         try:
@@ -737,8 +738,3 @@ def get_cities(request):
             return JsonResponse({'cities': list(cities.values('name','id'))})
         except (ValueError, City.DoesNotExist):
             return JsonResponse({'error': 'Invalid province ID'})
-
-
-
-
-
