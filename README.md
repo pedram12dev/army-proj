@@ -52,4 +52,5 @@ $ python manage.py runserver
 UI/UX Designer: Mehrana Abian <br />
 Frontend Developer : Hossein Hossein <br />
 Backend Developer: Pedram Najafi <br />
-AI Engineer : Rezvan Sangcheshmeh
+AI Engineer : Rezvan Sangcheshmeh <br  />
+Project Manager: Iman Shameli
