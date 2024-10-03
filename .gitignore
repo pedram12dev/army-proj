@@ -10,3 +10,4 @@ django.log
 .vscode
 __pycache__
 .DS_Store
+final_result.xlsx
