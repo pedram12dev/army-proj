@@ -41,6 +41,10 @@ $ python manage.py loaddata cities.json
 ```
 $ python manage.py createsuperuser
 ```
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
 و درنهایت کافیه پروژه رو اجرا و استفاده کنید 
 ```
 $ python manage.py runserver
