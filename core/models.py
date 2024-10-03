@@ -15,7 +15,6 @@ class Province(models.Model):
 
 
 class City(models.Model):
-    # province = models.ForeignKey(Province,on_delete=models.CASCADE,related_name='cities',null=True)
     name = models.CharField(max_length=56)
     slug= models.SlugField(max_length=56,null=True)
     province_id = models.IntegerField(null=True)
