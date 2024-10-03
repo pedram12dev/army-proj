@@ -12,7 +12,6 @@ from .models import UserResult,UserResultFinal
 from django.http import FileResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-import warnings
 import pandas as pd
 import joblib
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
@@ -22,9 +21,6 @@ import pickle
 class HomeView(View):
     def get(self, request):
         return render(request, 'home.html')
-
-    # def post(self):
-    #     return redirect('core:page_one')
 
 
 class PageOneView(View):
@@ -49,7 +45,6 @@ class PageOneView(View):
                 'pain_sckelete_number': cd['pain_sckelete_number'],
                 'pain_sckelete': cd['pain_sckelete']
             }
-            print(request.session['page_one'])
             return redirect('core:page_two')
         return render(request, 'page_one.html')
 
@@ -65,9 +60,6 @@ class PageTwoView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            # print(cd)
-            # value = cd['province'], cd['city'], cd['tahsilat'], cd['weight'], cd[
-            #     'height'],cd['time_goes'], cd['job'], cd['sleep']
             for value in cd['province']:
                 province = value
 
@@ -85,7 +77,6 @@ class PageTwoView(View):
                 'city': city
             }
 
-            print(request.session['page_two'])
             return redirect('core:page_three')
         return render(request, 'page_two.html', {'form': form})
 
@@ -108,7 +99,6 @@ class PageThreeView(View):
             request.session['page_three'] = {
                 'key': k
             }
-            print(request.session['page_three'])
             return redirect('core:page_four')
         return render(request, 'page_three.html', {'form': form})
 
@@ -134,10 +124,6 @@ class PageFourView(View):
                 'answer_str': val,
                 'result': result
             }
-
-            # init_number = form.answer +1
-            # print(init_number)
-            print(request.session['page_four'])
             return redirect('core:page_five')
         return render(request, 'page_four.html', {'form': form})
 
@@ -165,8 +151,6 @@ class PageFiveView(View):
 
             result = request.session['page_four']
             oswestry = k + k_2 + result['key']
-            print(oswestry)
-            print(result)
             request.session['page_five'] = {
                 'oswestry_1': oswestry,
                 'answer_str_1': val,
@@ -174,7 +158,6 @@ class PageFiveView(View):
                 'result': result,
             }
 
-            print(request.session['page_five'])
             return redirect('core:page_six')
         return render(request, 'page_five.html', {'form': form})
 
@@ -202,8 +185,6 @@ class PageSixView(View):
 
             result = request.session['page_five']
             oswestry = k + k_2 + result['oswestry_1']
-            print(oswestry)
-
             request.session['page_six'] = {
                 'oswestry_2': oswestry,
                 'key_2': k_2,
@@ -211,7 +192,6 @@ class PageSixView(View):
                 'answer_str_2': val_2,
 
             }
-            print(request.session['page_six'])
             return redirect('core:page_seven')
         return render(request, 'page_six.html', {'form': form})
 
@@ -238,7 +218,6 @@ class PageSevenView(View):
                     val_2 = value
             result = request.session['page_six']
             oswestry = k + k_2 + result['oswestry_2']
-            print(oswestry)
             request.session['page_seven'] = {
                 'oswestry_3': oswestry,
                 'key_2': k_2,
@@ -246,7 +225,6 @@ class PageSevenView(View):
                 'answer_str_2': val_2,
 
             }
-            print(request.session['page_seven'])
             return redirect('core:page_eight')
         return render(request, 'page_seven.html', {'form': form})
 
@@ -274,7 +252,6 @@ class PageEightView(View):
 
             result = request.session['page_seven']
             oswestry = k + k_2 + result['oswestry_3']
-            print(oswestry)
             request.session['page_eight'] = {
                 'oswestry_4': oswestry,
                 'key_2': k_2,
@@ -282,7 +259,6 @@ class PageEightView(View):
                 'answer_str_2': val_2,
 
             }
-            print(request.session['page_eight'])
             return redirect('core:page_nine')
         return render(request, 'page_eight.html', {'form': form})
 
@@ -305,15 +281,12 @@ class PageNineView(View):
 
             result = request.session['page_eight']
             score = k + result['oswestry_4']
-            print(score)
             final_result = determine_disability_level(score)
-            print(final_result)
             request.session['page_nine'] = {
                 'oswestry_result': final_result,
                 'score_result': score,
 
             }
-            print(request.session['page_nine'])
             return redirect('core:page_ten')
         return render(request, 'page_nine.html', {'form': form})
 
@@ -352,7 +325,6 @@ class PageTenView(View):
                 'anxiety_1': anxiety_result,
                 'depression_1': depression_result
             }
-            print(request.session['page_ten'])
             return redirect('core:page_eleven')
         return render(request, 'page_ten.html', {'form': form})
 
@@ -396,7 +368,6 @@ class PageElevenView(View):
                 'anxiety_2': anxiety_result,
                 'depression_2': depression_result
             }
-            print(request.session['page_eleven'])
             return redirect('core:page_twelve')
         return render(request, 'page_eleven.html', {'form': form})
 
@@ -440,7 +411,6 @@ class PageTwelveView(View):
                 'anxiety_3': anxiety_result,
                 'depression_3': depression_result
             }
-            print(request.session['page_twelve'])
             return redirect('core:page_thirteen')
         return render(request, 'page_twelve.html', {'form': form})
 
@@ -470,11 +440,9 @@ class PageThirteenView(View):
                     k_4 = int(key)
 
             result = request.session['page_twelve']
-
             stress_result = k_4 + result['stress_3']
             anxiety_result = k_2 + k_3 + result['anxiety_3']
             depression_result = k_1 + result['depression_3']
-
             finally_stress_result = determine_stress_level(stress_result)
             finally_anxiety_result = determine_anxiety_level(anxiety_result)
             finally_depression_result = determine_depression_level(depression_result)
@@ -515,13 +483,7 @@ class PageThirteenView(View):
             }
             
             df = pd.DataFrame.from_dict(data_record)
-            
-            
-
             df.drop('age' , axis=1, inplace=True)
-            
-            
-            
             
             class DataPreprocessor:
                 def init(self):
@@ -579,7 +541,6 @@ class PageThirteenView(View):
             preprocessor = DataPreprocessor()
             X_train = preprocessor.transform(temp)
 
-            
             t = X_train[-1].reshape(1 , -1)
             # Load the model from the file
             with open('random_forest_model.pkl', 'rb') as file:
@@ -680,7 +641,6 @@ class PageFifteenView(View):
         chronic = UserResultFinal.objects.last()
         value = chronic.percentage
         data= value.replace('[', '').replace(']','').replace(',','').split(' ')
-        # had = int(float(data[1]) *100)
         mozmen = int(float(data[1]) *100)
         result =""
         if mozmen >= 71:
